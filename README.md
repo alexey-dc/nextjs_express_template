@@ -9,10 +9,12 @@ I tried to make the code as barebones as possible, but in a way that includes an
 actually using the template. The idea is to delete most of this code to actually start a project with this template:
 all the pages except for `main.jsx` should be deleted, as well as the demo routes in `app/route/pages.js` and `app/route/api.js`. The rest should be a minimal skeleton.
 
+I wrote a tutorial for this project, which can be found here https://dev.to/alexeydc/express-nextjs-sample-tutorial-integration-485f
+
 # Running
 This project is set up to run HTTPS. The instructions to set up your certificates in localhost are below.
 
-It's recommended to use yarn with this project, as `yarn.lock` is commited: `yarn install`. See https://classic.yarnpkg.com/en/docs/install/#mac-stable
+It's recommended to use yarn with this project, as `yarn.lock` is commited: `yarn install`. See https://classic.yarnpkg.com/en/docs/install
 
 The project relies on the `dotenv` package, so you'll need to create a `.env` file at the root of this project and add some environment variables into it. Your .env file should env up looking something like this - be sure to follow the instructions in the next sextion for setting up the SSL certificates:
 
@@ -57,8 +59,8 @@ SSL_CERTIFICATE_PATH = mkcert/localhost.pem
 
 That's not the end of the story if you want to run tests against your API outside the browser, though.
 
-## Running tests with local HTTPS
-Even though mkcert certificates are a step up from being self-signed, since there's a self-issued certificate authority that signed them, the CA (Certificate Authority) is not recognizable by standard HTTPS clients (e.g. via `fetch` or node's `https` module): they will error out with UNABLE_TO_VERIFY_LEAF_SIGNATURE`, saying `Error: unable to verify the first certificate.
+## Running tests with local HTTPS (not necessary to run this project)
+Even though mkcert certificates are a step up from being self-signed, since there's a self-issued certificate authority that signed them, the CA (Certificate Authority) is not recognizable by standard HTTPS clients (e.g. via `fetch` or node's `https` module): they will error out with `UNABLE_TO_VERIFY_LEAF_SIGNATURE`, saying `Error: unable to verify the first certificate`.
 
 To bypass this, a client can be told to accept certificates issued by a certain certificate authority. CAs are identified via public keys: each certificate issued by a CA is signed with its private key.
 
