@@ -12,8 +12,11 @@ export async function getServerSideProps({req, res}) {
 export default class extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {i: '?'}
+    this.state = {i: '?', ready: false}
     this.increment = async () => {
+      if(!this.state.ready) {
+        return
+      }
       const response = await fetch("/api/increment", {method: 'POST', });
       const json = await response.json()
       this.setState({i: json.i})
@@ -23,7 +26,7 @@ export default class extends React.Component {
   componentDidMount() {
     fetch("/api/get").then(async (response) => {
       const json = await response.json()
-      this.setState({i: json.i})
+      this.setState({i: json.i, ready: true})
     })
   }
 
