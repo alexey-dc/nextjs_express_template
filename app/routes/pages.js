@@ -13,10 +13,8 @@ class Pages {
     this.express.get('/my_special_page/:special_value', (req, res) => {
       const intValue = parseInt(req.params.special_value)
       if(intValue) {
-        res.locals = { value: intValue }
         return this.next.render(req, res, `/special_int`, req.query)
       } else {
-        res.locals = { value: req.params.special_value }
         return this.next.render(req, res, `/special_string`, req.query)
       }
     })

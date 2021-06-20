@@ -1,15 +1,15 @@
 import React from 'react'
 import Layout from '../view/layout.jsx'
 
-export default class extends React.Component {
-  static async getInitialProps({ req, res }) {
-    const locals = res.locals
-    return {
-      locals,
-      value: locals.value
+export async function getServerSideProps({req, res}) {
+  return {
+    props: {
+      value: req.params.special_value
     }
   }
+}
 
+export default class extends React.Component {
   constructor(props) {
     super(props)
   }

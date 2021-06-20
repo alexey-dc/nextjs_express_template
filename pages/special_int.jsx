@@ -1,15 +1,15 @@
 import React from 'react'
 import Layout from '../view/layout.jsx'
 
-export default class extends React.Component {
-  static async getInitialProps({ req, res }) {
-    const locals = res.locals
-    return {
-      locals,
-      pageValue: locals.value
+export async function getServerSideProps({req, res}) {
+  return {
+    props: {
+      pageValue: parseInt(req.params.special_value)
     }
   }
+}
 
+export default class extends React.Component {
   constructor(props) {
     super(props)
     this.state = {i: '?'}
@@ -34,7 +34,7 @@ export default class extends React.Component {
       <span style={{fontSize: "28px"}}>API value:</span> <span style={{fontSize: "48px"}}> <u> {this.state.i} </u> </span>
       <br/><br/>
       <button onClick={this.increment}> Increment </button>
-      <h3> Refresh - and the bottom number stays persisted. Change the number in the URL - change the top number. </h3>
+      <h3> Refresh - and the bottom number stays persisted. Change the number in the URL to change the top number. </h3>
 
       <a style={{fontSize: "36px"}} href="/"> Go back </a>
     </Layout>

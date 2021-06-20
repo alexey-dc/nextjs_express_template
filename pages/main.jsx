@@ -2,13 +2,6 @@ import React from 'react'
 import Layout from '../view/layout.jsx'
 
 export default class extends React.Component {
-  static async getInitialProps({ req, res }) {
-    const locals = res.locals
-    return {
-      locals
-    }
-  }
-
   constructor(props) {
     super(props)
   }
@@ -27,7 +20,7 @@ export default class extends React.Component {
         increment an integer that's stored on the server through the express API.
       </p>
       <h3> Exhibit A </h3>
-      <a style={{fontSize: "36px"}} href="/my_special_page/5"> Test special routing + integer API </a>
+      <a style={{fontSize: "36px"}} href="/my_special_page/5"> Test special routing + API </a>
       <h3> Exhibit B </h3>
       <a style={{fontSize: "36px"}} href="/my_special_page/a_special_string"> Test special routing </a>
       <h3> Exhibit C </h3>
