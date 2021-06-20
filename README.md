@@ -87,5 +87,3 @@ cp '/Users/alexey/Library/Application Support/mkcert/rootCA.pem' 'mkcert/rootCA.
 SSL_ROOTCA_PATH = mkcert/rootCA-key.pem
 ```
 
-# Credits
-The favicon included is licenced under the Creative Commons license. I got it from https://thenounproject.com/term/peace/2457018/
