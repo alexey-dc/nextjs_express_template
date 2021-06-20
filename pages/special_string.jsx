@@ -9,18 +9,11 @@ export async function getServerSideProps({req, res}) {
   }
 }
 
-export default class extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
-  render() {
-    return <Layout>
-      <h2> Welcome to the the special string page </h2>
-      <h3> The server told me that the sub-route is: </h3>
-      <div style={{fontSize:"36px", marginBottom: "36px", color: "teal"}}>{this.props.value}</div>
-      <a style={{fontSize: "36px"}} href="/"> Go back </a>
-    </Layout>
-  }
-
+export default function SpecialString(props) {
+  return <Layout>
+    <h2> Welcome to the the special string page </h2>
+    <h3> The server told me that the sub-route is: </h3>
+    <div style={{fontSize:"36px", marginBottom: "36px", color: "teal"}}>{props.value}</div>
+    <a style={{fontSize: "36px"}} href="/"> Go back </a>
+  </Layout>
 }

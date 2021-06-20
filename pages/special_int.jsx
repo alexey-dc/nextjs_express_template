@@ -42,6 +42,4 @@ export default class extends React.Component {
       <a style={{fontSize: "36px"}} href="/"> Go back </a>
     </Layout>
   }
-
-
 }
