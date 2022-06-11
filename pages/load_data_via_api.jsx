@@ -9,7 +9,7 @@ const LoadDataViaApi = (props) => {
     const json = await response.json()
     setValue(json.i)
   })
-  React.useEffect(async () => {
+  React.useEffect(() => {
     // Timeout to showcase loading state
     setTimeout(async () => {
       const response = await fetch("/api/get", {method: 'GET', });

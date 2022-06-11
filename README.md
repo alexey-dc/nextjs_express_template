@@ -3,7 +3,7 @@ This is a basic integration of NextJS + ExpressJS.
 
 One important reason to use a server like this is architectural simplicity - it allows maintaining only 1 deploy.
 
-For a mature project, it's common to embrace a distributed setup: for example, running the front end, API, socket server, worker system - on different services. A younger project's goals are often to prove out a product idea; starting the project out as a monolith can help improve velocity and ship bug-free code - by side-stepping the complexities of [distributed systems concerns](https://aws.amazon.com/builders-library/challenges-with-distributed-systems/).
+For a mature project, it's common to embrace a distributed setup: for example, running the front end, API, socket server, worker system - on different services. A younger project's goals are often to prove out a product idea; starting the project out as a monolith can help improve velocity and ship bug-free code - by side-stepping some of the [complexities of distributed systems](https://aws.amazon.com/builders-library/challenges-with-distributed-systems/).
 
 The code is intended to be barebones, but it does exhibit usage of the template. To actually use it as the base of a project, you probably want to delete most of the sample code:
 - Delete all pages except `main.jsx`
