@@ -19,10 +19,10 @@ const PreloadData = (props) => {
   })
   return <Layout>
     <h2>Preloaded data</h2>
-    <a href=""> See page source </a>
-    <p> The data for this page was fetched <a target="_blank" href="">as the page was loaded.</a></p>
-    <p> It was <a target="_blank" href="">loaded into the page's state on the first load</a>, and is updated via subsequent API calls. </p>
-    <p> It's <a target="_blank" href="">stored on the backend</a> - so it survives page refreshes (but not server restarts: the data is in memory).</p>
+    <a target="_blank" href="https://github.com/alexey-dc/nextjs_express_template/blob/main/pages/preload_data.jsx"> See page source </a>
+    <p> The data for this page was <a target="_blank" href="https://github.com/alexey-dc/nextjs_express_template/blob/main/app/routes/pages.js#L18">pre-fetched</a> as the page was <a target="_blank" href="https://github.com/alexey-dc/nextjs_express_template/blob/main/pages/preload_data.jsx#L8">set up by NextJS.</a></p>
+    <p> It was <a target="_blank" href="https://github.com/alexey-dc/nextjs_express_template/blob/main/pages/preload_data.jsx#L14">loaded into the page's state on the first load</a>, and is updated via subsequent API calls. </p>
+    <p> It's <a target="_blank" href="https://github.com/alexey-dc/nextjs_express_template/blob/main/app/data/integer_memory_store.js#L3">stored on the backend</a> - so it survives page refreshes (but not server restarts: the data is in memory).</p>
     <p> The alternative is to serve the page first, and have it fetch the data afterwards. See <a href="/load_data_via_api">this example</a> for that pattern. </p>
 
     <div className="f-row">

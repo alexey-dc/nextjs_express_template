@@ -25,13 +25,13 @@ const LoadDataViaApi = (props) => {
       }}
     >
       <h1 style={{textAlign: "center", marginTop: "20vh"}}>
-        Loading...
+        Loading (artificially slowed, 2 seconds)...
       </h1>
     </div>
   }
   return <Layout>
     <h2>Data fetch after page load</h2>
-    <a href=""> See page source </a>
+    <a target="_blank" href="https://github.com/alexey-dc/nextjs_express_template/blob/main/pages/load_data_via_api.jsx"> See page source </a>
     <p> This page is loaded in several steps: </p>
     <ol>
       <li>Fetch the page</li>
