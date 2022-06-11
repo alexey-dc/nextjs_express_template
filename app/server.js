@@ -29,7 +29,7 @@ class Server {
     await this.next.prepare()
     await this.middleware.init()
     await this.router.init()
-    this.server = httpsServer(this.express)
+    this.server = httpServer(this.express)
     this.server.listen(process.env.EXPRESS_PORT)
   }
 }

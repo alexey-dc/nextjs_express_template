@@ -1,50 +1,55 @@
 # About
 This is a basic integration of NextJS + ExpressJS.
 
-Such a setup may be useful if you wish to have more control over your backend logic and your routing, since NextJS's default behavior is to control the routing.
+One important reason to use a server like this is architectural simplicity - it allows maintaining only 1 deploy.
 
-This setup allows defining routes for HTTP endpints, or custom routing logic for pages (e.g. perhaps you wish to render a different page on the same route depending on the circumstances).
+For a mature project, it's common to embrace a distributed setup: for example, running the front end, API, socket server, worker system - on different services. A younger project's goals are often to prove out a product idea; starting the project out as a monolith can help improve velocity and ship bug-free code - by side-stepping the complexities of [distributed systems concerns](https://aws.amazon.com/builders-library/challenges-with-distributed-systems/).
 
-I tried to make the code as barebones as possible, but in a way that includes an exhibit of some common patterns of
-actually using the template. The idea is to delete most of this code to actually start a project with this template:
-all the pages except for `main.jsx` should be deleted, as well as the demo routes in `app/route/pages.js` and `app/route/api.js`. The rest should be a minimal skeleton.
+The code is intended to be barebones, but it does exhibit usage of the template. To actually use it as the base of a project, you probably want to delete most of the sample code:
+- Delete all pages except `main.jsx`
+- Delete the demo routes in `app/route/pages.js` and `app/route/api.js`
+- Delete`app/data`.
 
-I wrote a tutorial for this project, which can be found here https://dev.to/alexeydc/express-nextjs-sample-tutorial-integration-485f
+There's a tutorial for this project, which can be found here https://dev.to/alexeydc/express-nextjs-sample-tutorial-integration-485f
 
-# Running
-This project is set up to run HTTPS. The instructions to set up your certificates in localhost are below.
-
-It's recommended to use yarn with this project, as `yarn.lock` is commited: `yarn install`. See https://classic.yarnpkg.com/en/docs/install
-
-The project relies on the `dotenv` package, so you'll need to create a `.env` file at the root of this project and add some environment variables into it. Your .env file should env up looking something like this - be sure to follow the instructions in the next sextion for setting up the SSL certificates:
+# Before running
+The project relies on the `dotenv` package, so you'll need to create a `.env`. It's common to place secrets in `.env` - so it is `.gitignore`d in this project. A `.env-example` is provided with the barebones setup that does not require any secrets:
 
 ```bash
 NODE_ENV=development
 EXPRESS_PORT=3333
-
-SSL_PRIVATE_KEY_PATH = mkcert/localhost-key.pem
-SSL_CERTIFICATE_PATH = mkcert/localhost.pem
-SSL_ROOTCA_PATH = mkcert/rootCA-key.pem
 ```
 
-After all is ready, just do
+# Running
+`pnpm-lock.yaml` is commited, so the default way to run this project is with `pnpm`. See https://pnpm.io/installation if you're not already using it.
+
 ```bash
-yarn start
+# For pnpm vs yarn vs npm, see https://pnpm.io/benchmarks
+pnpm install
+pnpm start
 ```
 
-# Localhost HTTPS
-(From: https://web.dev/how-to-use-local-https/)
+# HTTP vs HTTPS
+The code is set up to easily run local HTTP or HTTPS.
 
+If you're debating which one to use for yourself, here is a good article that helps establish a decision boundary:
+https://web.dev/when-to-use-local-https
 
-I recommend setting up certificates with mkcert. It's really simple:
+## Localhost HTTP
+If you just run the code as-is, it will run on HTTP, no additional changes or setup necessary.
+
+## Localhost HTTPS
+One of the easiest ways to use HTTPS locally is with mkcert. It's really simple:
 
 ```bash
 # 1. Install mkcert
-brew install mkcert   # For MacOS; for Linux - you can e.g. install brew https://docs.brew.sh/Homebrew-on-Linux
+# Mac
+brew install mkcert
 brew install nss      # for Firefox
+# Linux: https://github.com/FiloSottile/mkcert#linux
 mkcert -install
 
-# 2. Issue certifivates
+# 2. Issue certificates
 mkdir mkcert          # Inside the root of this project
 cd mkcert
 mkcert localhost
@@ -57,9 +62,9 @@ SSL_PRIVATE_KEY_PATH = mkcert/localhost-key.pem
 SSL_CERTIFICATE_PATH = mkcert/localhost.pem
 ```
 
-That's not the end of the story if you want to run tests against your API outside the browser, though.
+If you want to run tests against your API outside the browser, you'll want the additional setup steps below.
 
-## Running tests with local HTTPS (not necessary to run this project)
+### Running tests with local HTTPS (not necessary to run this project)
 Even though mkcert certificates are a step up from being self-signed, since there's a self-issued certificate authority that signed them, the CA (Certificate Authority) is not recognizable by standard HTTPS clients (e.g. via `fetch` or node's `https` module): they will error out with `UNABLE_TO_VERIFY_LEAF_SIGNATURE`, saying `Error: unable to verify the first certificate`.
 
 To bypass this, a client can be told to accept certificates issued by a certain certificate authority. CAs are identified via public keys: each certificate issued by a CA is signed with its private key.
