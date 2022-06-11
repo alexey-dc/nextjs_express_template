@@ -39,6 +39,14 @@ https://web.dev/when-to-use-local-https
 If you just run the code as-is, it will run on HTTP, no additional changes or setup necessary.
 
 ## Localhost HTTPS
+To enable HTTPS locally, you'll need to change line 32 in `app/server.js`:
+```javascript
+// Before
+this.server = httpServer(this.express)
+// After
+this.server = httpsServer(this.express)
+```
+
 One of the easiest ways to use HTTPS locally is with mkcert. It's really simple:
 
 ```bash
