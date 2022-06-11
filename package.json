@@ -4,7 +4,7 @@
   "description": "Template for a NextJS+ExpressJS web app",
   "main": "index.js",
   "repository": "git@github.com:alexey-dc/nextjs_express_template.git",
-  "author": "alexey-dc <alexey.chernikov.it@gmail.com>",
+  "author": "alexey-dc <alexey.opensource@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.20.0",

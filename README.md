@@ -40,6 +40,8 @@ The code is set up to easily run local HTTP or HTTPS.
 If you're debating which one to use for yourself, here is a good article that helps establish a decision boundary:
 https://web.dev/when-to-use-local-https
 
+For example, you may have to use a custom local hostname if you're working OAuth - some OAuth providers don't allow using localhost as a redirect URL (e.g. [PayPal does not allow this](https://stackoverflow.com/questions/14436483/setting-paypal-return-url-to-localhost)).
+
 ## Localhost HTTP
 If you just run the code as-is, it will run on HTTP, no additional changes or setup necessary.
 
