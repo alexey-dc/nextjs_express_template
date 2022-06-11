@@ -13,8 +13,13 @@ The code is intended to be barebones, but it does exhibit usage of the template.
 There's a tutorial for this project, which can be found here https://dev.to/alexeydc/express-nextjs-sample-tutorial-integration-485f
 
 # Before running
-The project relies on the `dotenv` package, so you'll need to create a `.env`. It's common to place secrets in `.env` - so it is `.gitignore`d in this project. A `.env-example` is provided with the barebones setup that does not require any secrets:
+The project relies on the `dotenv` package, so you'll need to create a `.env`. It's common to place secrets in `.env` - so it is `.gitignore`d in this project. A `.env-example` is provided with the barebones setup that does not require any secrets. It's a good starting point, so you can do:
 
+```bash
+cp .env-example .env
+```
+
+Redundantly, here's an example of `.env` contents for this project:
 ```bash
 NODE_ENV=development
 EXPRESS_PORT=3333
